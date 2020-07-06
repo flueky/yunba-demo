@@ -1,3 +1,31 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.flueky.android.yunba_demo">
+
+    <application
+        android:name="com.flueky.demo.DemoApplication"
+        android:icon="@mipmap/icon">
+        <meta-data
+            android:name="YUNBA_APPKEY"
+            android:value="5bd901d2b11d5ae467c8da9e" />
+        <activity android:name="com.flueky.demo.MainActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <service android:name="io.yunba.android.core.YunBaService"></service>
+
+        <receiver android:name="io.yunba.android.core.YunBaReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.flueky.demo.MyReceiver">
+            <intent-filter>
+                <action android:name="io.yunba.android.MESSAGE_RECEIVED_ACTION" />
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+    </application>
 </manifest>

@@ -27,5 +27,5 @@ version = rootProject.ext.yunba.versionName // 指定版本
 //artifactId='yunba'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    api fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
 }
