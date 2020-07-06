@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+apply from: "../../maven.gradle"
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        // 最小 sdk 版本，低于此 Android 版本的手机不能安装
+        minSdkVersion rootProject.ext.minSdkVersion
+        // 目标 sdk 版本，低于此 Android 版本的手机完美兼容，高于此 Android 版本的手机，部分特性不能使用
+        // 升级 target 需要针对高版本做兼容。
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        // 应用版本号，覆盖安装时，升级版本依据
+        versionCode rootProject.ext.yunba.versionCode
+        // 版本名称，
+        versionName rootProject.ext.yunba.versionName
+    }
+}
+
+// 远程库名称通常由三部分构成 ，groupId:artifactId:version
+// 定义 group
+group = 'com.flueky.android'
+// 定义 version
+version = rootProject.ext.yunba.versionName // 指定版本
+// artifactId 默认使用 module name
+//artifactId='yunba'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+}

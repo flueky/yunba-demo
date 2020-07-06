@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        // 应用 id
+        applicationId rootProject.ext.applicationId
+        // 最小 sdk 版本，低于此 Android 版本的手机不能安装
+        minSdkVersion rootProject.ext.minSdkVersion
+        // 目标 sdk 版本，低于此 Android 版本的手机完美兼容，高于此 Android 版本的手机，部分特性不能使用
+        // 升级 target 需要针对高版本做兼容。
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        // 应用版本号，覆盖安装时，升级版本依据
+        versionCode rootProject.ext.app.versionCode
+        // 版本名称，
+        versionName rootProject.ext.app.versionName
+    }
+}
+
+dependencies {
+    // 依赖同级的 libs 目录，包含 jar 和 aar，还可以选择不包含指定文件
+    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation project(':library')
+}
